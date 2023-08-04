@@ -14,6 +14,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip  # Upgrade pip
             pip install -r requirements.txt
       # 3. Run coding convention software (Flake8)
       - run:
@@ -27,15 +28,9 @@ jobs:
           command: |
             . venv/bin/activate
             pytest --junitxml=test-results/junit.xml
-      # 5. Upgrade pip
-      - run:
-          name: Upgrade pip
-          command: |
-            . venv/bin/activate
-            python -m pip install --upgrade pip
-      # 6. Store test results
+      # 5. Store test results
       - store_test_results:
           path: test-results
-      # 7. Store artifacts
+      # 6. Store artifacts
       - store_artifacts:
           path: test-results
