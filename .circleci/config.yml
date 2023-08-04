@@ -1,30 +1,28 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/python:3.7  # Replace with your desired base image
     working_directory: ~/devops
     steps:
-      # 1. Obtain repo from Github
+      # 1. Checkout your code from the repository
       - checkout
-      # 2. Create a virtual environment and install dependencies
+      # 2. Build and test your Dockerized application
+      - setup_remote_docker:
+          version: 20.10.7
       - run:
-          name: install dependencies
+          name: Build Docker image
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-      # 3. Run coding convention software plus tester.
+            docker build -t myapp .
       - run:
-          name: run tests
+          name: Run Tests in Docker
           command: |
-            . venv/bin/activate
-            flake8 --exclude=venv* --statistics
-            pytest -v --junitxml=test-results/junit.xml
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
+            docker run myapp pytest -v
+      # Additional steps as needed, such as pushing the image to a registry
 
-
-
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build
