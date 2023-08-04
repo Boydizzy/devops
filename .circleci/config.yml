@@ -34,3 +34,4 @@ jobs:
       # 6. Store artifacts
       - store_artifacts:
           path: test-results
+
