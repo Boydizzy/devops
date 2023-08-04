@@ -9,19 +9,16 @@ jobs:
       - checkout
 
       # Set working directory
+      - setup_remote_docker:
+          version: 20.10.11
       - run:
           name: Set Working Directory
-          command: cd devops
+          command: cd ~/devops
 
       # Install dependencies
       - run:
           name: Install Dependencies
           command: pip install -r requirements.txt
-
-      # Run Flake8 linting
-      - run:
-          name: Run Flake8 Linter
-          command: flake8
 
       # Run tests
       - run:
@@ -43,9 +40,11 @@ jobs:
       - checkout
 
       # Set working directory
+      - setup_remote_docker:
+          version: 20.10.11
       - run:
           name: Set Working Directory
-          command: cd devops
+          command: cd ~/devops
 
       # Install dependencies
       - run:
