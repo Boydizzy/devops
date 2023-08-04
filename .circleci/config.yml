@@ -8,6 +8,10 @@ jobs:
     steps:
       # 1. Obtain repo from Github
       - checkout
+      #check working directory
+      - run:
+          name: check working directory
+          command: pwd
       # 2. Create a virtual environment and install dependencies
       - run:
           name: Install Dependencies
@@ -34,4 +38,3 @@ jobs:
       # 6. Store artifacts
       - store_artifacts:
           path: test-results
-
