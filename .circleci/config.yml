@@ -18,8 +18,9 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install apturl
             pip install --upgrade pip  # Upgrade pip
+            pip install apturl
+
             pip install -r requirements.txt
       # 4. Run coding convention software (Flake8)
       - run:
