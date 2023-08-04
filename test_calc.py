@@ -23,4 +23,3 @@ def test_divide():
     assert divide(8, 4) == 2
     # Assuming your divide function handles division by zero gracefully
     assert divide(5, 0) is None
-
