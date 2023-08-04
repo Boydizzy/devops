@@ -13,7 +13,7 @@ jobs:
           version: 20.10.11
       - run:
           name: Set Working Directory
-          command: cd ~/devops
+          command: ~/devops
 
       # Install dependencies
       - run:
@@ -44,7 +44,7 @@ jobs:
           version: 20.10.11
       - run:
           name: Set Working Directory
-          command: cd ~/devops
+          command: ~/devops
 
       # Install dependencies
       - run:
