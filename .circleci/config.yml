@@ -15,6 +15,14 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
+            
+      - run:
+          name: Upgrade flake8
+          command: |
+            . venv/bin/activate
+            pip install --upgrade flake8
+
+
 
       # 3. Run coding convention software plus tester.
       - run:
