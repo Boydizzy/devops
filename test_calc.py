@@ -21,4 +21,6 @@ def test_multiply():
 def test_divide():
     assert divide(10, 2) == 5
     assert divide(8, 4) == 2
-    assert divide(5, 0) is None  # Assuming your divide function handles division by zero gracefully
+    # Assuming your divide function handles division by zero gracefully
+    assert divide(5, 0) is None
+
