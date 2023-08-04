@@ -8,6 +8,13 @@ jobs:
     steps:
       - checkout
 
+      # Set working directory
+      - setup_remote_docker:
+          version: 20.10.11
+      - run:
+          name: Set Working Directory
+          command: cd ~/devops
+
       # Install dependencies
       - run:
           name: Install Dependencies
@@ -31,6 +38,13 @@ jobs:
 
     steps:
       - checkout
+
+      # Set working directory
+      - setup_remote_docker:
+          version: 20.10.11
+      - run:
+          name: Set Working Directory
+          command: cd ~/devops
 
       # Install dependencies
       - run:
@@ -56,4 +70,3 @@ workflows:
       - deploy:
           requires:
             - build
-
