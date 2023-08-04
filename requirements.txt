@@ -2,8 +2,8 @@ argon-cffi==20.1.0
 async-generator==1.10
 attrs==20.3.0
 bcrypt==3.1.7
-bleach=3.3.0
+bleach==3.3.0
 blinker==1.4
-certifi=2019.11.28
-cffi=1.14.5
+certifi==2019.11.28
+cffi==1.14.5
 chardet==3.0.4
