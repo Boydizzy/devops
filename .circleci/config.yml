@@ -8,21 +8,33 @@ jobs:
     steps:
       # 1. Obtain repo from Github
       - checkout
-      # 2. Create a virtual environment and install dependencies
+      # 2. Check working directory
       - run:
-          name: install dependencies
+          name: Check Working Directory
+          command: pwd
+      # 3. Create a virtual environment and install dependencies
+      - run:
+          name: Install Dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip  # Upgrade pip
             pip install -r requirements.txt
-      # 3. Run coding convention software plus tester.
+      # 4. Run coding convention software (Flake8)
       - run:
-          name: run tests
+          name: Run Flake8 Linter
           command: |
             . venv/bin/activate
             flake8 --exclude=venv* --statistics
+      # 5. Run tests
+      - run:
+          name: Run Tests
+          command: |
+            . venv/bin/activate
             pytest --junitxml=test-results/junit.xml
+      # 6. Store test results
       - store_test_results:
           path: test-results
+      # 7. Store artifacts
       - store_artifacts:
           path: test-results
