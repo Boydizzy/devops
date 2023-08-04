@@ -18,6 +18,11 @@ jobs:
           name: Install Dependencies
           command: pip install -r requirements.txt
 
+      # Run Flake8 linting
+      - run:
+          name: Run Flake8 Linter
+          command: flake8
+
       # Run tests
       - run:
           name: Run Tests
@@ -66,5 +71,3 @@ workflows:
       - deploy:
           requires:
             - build
-
-
