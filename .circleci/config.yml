@@ -15,6 +15,10 @@ jobs:
           command: |
             pip install -r requirements.txt
       - run:
+          name: upgrade pip
+          command: |
+            pip install --upgrade pip      
+      - run:
           name: Run Tests
           command: |
             python -m pytest
