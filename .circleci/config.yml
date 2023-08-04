@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
-    working_directory: ~/home/circleci/home/circleci/devops
+    working_directory: ~/devops
     steps:
       # 1. Obtain repo from Github
       - checkout
@@ -26,4 +26,3 @@ jobs:
           path: test-results
       - store_artifacts:
           path: test-results
-
