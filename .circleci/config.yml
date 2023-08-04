@@ -11,13 +11,15 @@ jobs:
     steps:
       - checkout
       - run:
+         name: upgrade pip
+         command: |
+           pip install --upgrade pip
+
+
+      - run:
           name: Install Dependencies
           command: |
             pip install -r requirements.txt
-      - run:
-          name: upgrade pip
-          command: |
-            pip install --upgrade pip      
       - run:
           name: Run Tests
           command: |
@@ -33,4 +35,5 @@ workflows:
   build-test:
     jobs:
       - build
+
 
