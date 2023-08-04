@@ -14,6 +14,10 @@ jobs:
          name: upgrade pip
          command: |
            pip install --upgrade pip
+      - run:
+          name: Directory
+          command: |
+            working_directory: ~/devops      
 
 
       - run:
