@@ -15,7 +15,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip  # Upgrade pip
-            pip install -r requirements.txt
+            pip install -r src/requirements.txt
       # 3. Run coding convention software (Flake8)
       - run:
           name: Run Flake8 Linter
