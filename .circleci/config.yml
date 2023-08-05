@@ -48,8 +48,11 @@ jobs:
             SERVER_HOST: your_server_host
             SSH_KEY: $SSH_KEY
 
+      - store_test_result:
+          path: test-results    
+
       - store_artifacts:
-          path: deploy_results
+          path: test-results
 
 workflows:
   version: 2
