@@ -27,9 +27,6 @@ jobs:
             flake8 --exclude=venv* --statistics
             pytest --junitxml=test-results/junit.xml
       
-      - store_test_results:
-          path: test-results
-      
       - store_artifacts:
           path: test-results
 
@@ -38,3 +35,4 @@ workflows:
   build_and_test:
     jobs:
       - build
+
