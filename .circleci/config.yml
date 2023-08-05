@@ -22,8 +22,6 @@ jobs:
             . venv/bin/activate
             pip install --upgrade flake8
 
-
-
       # 3. Run coding convention software plus tester.
       - run:
           name: run tests
@@ -40,18 +38,34 @@ jobs:
       # 1. Obtain repo from Github
       - checkout
 
-      # 2. Activate virtual environment and deploy
+      # 2. Activate virtual environment
+      - run:
+          name: create deployment directory
+          command: |
+            . venv/bin/activate
+            DEPLOY_DIR="DEPLOY-$(date +'%Y-%m-%d_%H-%M-%S')"
+            mkdir "$DEPLOY_DIR"
+
+      # 3. Copy artifacts and deployment script to the deployment directory
+      - run:
+          name: copy artifacts and deployment script
+          command: |
+            cp -R test-results "$DEPLOY_DIR"
+            cp deploy_script.sh "$DEPLOY_DIR"
+
+      # 4. Deploy to server
       - run:
           name: deploy to server
           command: |
             . venv/bin/activate
+            cd "$DEPLOY_DIR"
             ./deploy_script.sh
           environment:
             SERVER_HOST: your_server_host
             SSH_KEY: $SSH_KEY
 
       - store_artifacts:
-          path: deploy_results
+          path: "$DEPLOY_DIR"
 
 workflows:
   version: 2
